@@ -12,63 +12,53 @@ class CustomerController extends Controller
         return view('customer/create');
     }
 
-    public function insert(Request $insert)
+    public function Create(Request $Create)
     {
-        $insert->validate(
+        $Create->validate(
             [
                 'name' => 'required',
                 'email' => 'required|email',
                 'password' => 'required'
             ]
             );
-
-        // Insert Query
-
-        // $customer = new Customer;
-        // $customer->name = $insert['name'];
-        // $customer->email = $insert['email'];
-        // $customer->password = $insert['password'];
-        // $customer->save();
-        // dd($insert->all());
-        Customer::create($insert->all());
+        Customer::create($Create->all());
 
         return redirect(route('show'));
     }
 
-    public function view()
+    public function Show()
     {
-        $all_customer = Customer::all();
-        $data = compact('all_customer');
-        return view('customer/select')->with($data);
+        $AllCustomer = Customer::all();
+        return view('customer/select',compact('AllCustomer'));
     }
 
     public function delete($id)
     {
-        $customer_delete = Customer::find($id);
-        if (!is_null($customer_delete)) {
-            $customer_delete->delete();
+        $CustomerDelete = Customer::find($id);
+        if (!is_null($CustomerDelete)) {
+            $CustomerDelete->delete();
         }
         return redirect(route('show'));
     }
 
     public function update($id)
     {
-        $customer_update = Customer::find($id);
-        if (is_null($customer_update)) {
+        $CustomerUpdate = Customer::find($id);
+        if (is_null($CustomerUpdate)) {
             return redirect(route('show'));
         } else {
-            $data = compact('customer_update');
-            return view('customer/update')->with($data);
+            return view('customer/update',compact('CustomerUpdate'));
         }   
     }
 
     public function updateShow($id, Request $request)
     {
-        $customer_update = Customer::find($id);
-        $customer_update->name = $request['name'];
-        $customer_update->email = $request['email'];
-        $customer_update->password = $request['password'];
-        $customer_update->save();
+        $CustomerUpdate = Customer::find($id);
+        // $CustomerUpdate->name = $request['name'];
+        // $CustomerUpdate->email = $request['email'];
+        // $CustomerUpdate->password = $request['password'];
+        // $CustomerUpdate->save();
+        Customer::update($CustomerUpdate->all());
         return redirect(route('show'));
     }
 }
