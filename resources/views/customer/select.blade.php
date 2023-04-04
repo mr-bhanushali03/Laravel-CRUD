@@ -42,7 +42,7 @@
                     @php
                         $no = 1;
                     @endphp
-                    @foreach ($AllCustomer as $customer)
+                    @foreach ($Customers as $customer)
                         <tr class="table-primary">
                             <td class="col-lg-1">{{ $no }}</td>
                             <td class="col-lg-3">{{ $customer->name }}</td>

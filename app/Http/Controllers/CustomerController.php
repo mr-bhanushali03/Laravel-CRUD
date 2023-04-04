@@ -12,46 +12,46 @@ class CustomerController extends Controller
         return view('customer/create');
     }
 
-    public function Create(Request $Create)
+    public function Create(Request $request)
     {
-        $Create->validate(
+        $request->validate(
             [
                 'name' => 'required',
                 'email' => 'required|email',
                 'password' => 'required'
             ]
             );
-        Customer::create($Create->all());
+        Customer::create($request->all());
 
         return redirect(route('show'));
     }
 
     public function Show()
     {
-        $AllCustomer = Customer::all();
-        return view('customer/select',compact('AllCustomer'));
+        $Customers = Customer::all();
+        return view('customer/select',compact('Customers'));
     }
 
     public function delete($id)
     {
-        $CustomerDelete = Customer::find($id);
-        if (!is_null($CustomerDelete)) {
-            $CustomerDelete->delete();
+        $customer = Customer::find($id);
+        if (!is_null($customer)) {
+            $customer->delete();
         }
         return redirect(route('show'));
     }
 
-    public function update($id)
+    public function edit($id)
     {
-        $CustomerUpdate = Customer::find($id);
-        if (is_null($CustomerUpdate)) {
+        $customer = Customer::find($id);
+        if (is_null($customer)) {
             return redirect(route('show'));
         } else {
-            return view('customer/update',compact('CustomerUpdate'));
+            return view('customer/update',compact('customer'));
         }   
     }
 
-    public function updateShow($id, Request $request)
+    public function update($id, Request $request)
     {
         Customer::find($id)->update($request->all());
         return redirect(route('show'));

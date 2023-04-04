@@ -18,13 +18,13 @@
         <!-- place navbar here -->
     </header>
     <main>
-        <form action="{{route('updateShow',['id'=>$CustomerUpdate->id])}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('updateShow',['id'=>$customer->id])}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="container">
                 <h1 class="text-center">Update Customer</h1>
-                <x-update type="text" name="name" label="Please enter your Name" placeholder="Name" value="{{$CustomerUpdate->name}}"/>
-                <x-update type="email" name="email" label="Please enter your Email" placeholder="xyz@gamil.com" value="{{$CustomerUpdate->email}}"/>
-                <x-update type="password" name="password" label="Please enter your Password" placeholder="Password" value="{{$CustomerUpdate->password}}"/>
+                <x-update type="text" name="name" label="Please enter your Name" placeholder="Name" value="{{$customer->name}}"/>
+                <x-update type="email" name="email" label="Please enter your Email" placeholder="xyz@gamil.com" value="{{$customer->email}}"/>
+                <x-update type="password" name="password" label="Please enter your Password" placeholder="Password" value="{{$customer->password}}"/>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </form>
