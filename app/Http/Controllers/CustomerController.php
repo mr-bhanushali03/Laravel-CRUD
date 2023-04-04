@@ -53,12 +53,7 @@ class CustomerController extends Controller
 
     public function updateShow($id, Request $request)
     {
-        $CustomerUpdate = Customer::find($id);
-        // $CustomerUpdate->name = $request['name'];
-        // $CustomerUpdate->email = $request['email'];
-        // $CustomerUpdate->password = $request['password'];
-        // $CustomerUpdate->save();
-        Customer::update($CustomerUpdate->all());
+        Customer::find($id)->update($request->all());
         return redirect(route('show'));
     }
 }

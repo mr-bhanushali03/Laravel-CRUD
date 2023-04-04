@@ -15,7 +15,7 @@ use App\Http\Controllers\CustomerController;
 */
 
 Route::get('/',[CustomerController::class,'index']);
-Route::post('/customers',[CustomerController::class,'Create'])->name('insert');
+Route::post('/customers',[CustomerController::class,'Create'])->name('create');
 Route::get('/customers/view',[CustomerController::class,'Show'])->name('show');
 Route::get('/customers/delete/{id}',[CustomerController::class,'delete'])->name('delete');
 Route::get('/customers/update/{id}',[CustomerController::class,'update'])->name('update');

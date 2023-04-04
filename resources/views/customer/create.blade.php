@@ -18,7 +18,7 @@
         <!-- place navbar here -->
     </header>
     <main>
-        <form action="{{route('insert')}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('create')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="container">
                 <h1 class="text-center">Registration</h1>
