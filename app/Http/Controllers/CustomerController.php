@@ -9,10 +9,10 @@ class CustomerController extends Controller
 {
     public function index()
     {
-        return view('customer/create');
+        return view('customer.create');
     }
 
-    public function Create(Request $request)
+    public function create(Request $request)
     {
         $request->validate(
             [
@@ -23,13 +23,13 @@ class CustomerController extends Controller
             );
         Customer::create($request->all());
 
-        return redirect(route('show'));
+        return redirect()->route('show');
     }
 
-    public function Show()
+    public function show()
     {
         $Customers = Customer::all();
-        return view('customer/select',compact('Customers'));
+        return view('customer.select',compact('Customers'));
     }
 
     public function delete($id)
@@ -38,22 +38,22 @@ class CustomerController extends Controller
         if (!is_null($customer)) {
             $customer->delete();
         }
-        return redirect(route('show'));
+        return redirect()->route('show');
     }
 
     public function edit($id)
     {
         $customer = Customer::find($id);
         if (is_null($customer)) {
-            return redirect(route('show'));
+            return redirect()->route('show');
         } else {
-            return view('customer/update',compact('customer'));
+            return view('customer.update',compact('customer'));
         }   
     }
 
     public function update($id, Request $request)
     {
         Customer::find($id)->update($request->all());
-        return redirect(route('show'));
+        return redirect()->route('show');
     }
 }

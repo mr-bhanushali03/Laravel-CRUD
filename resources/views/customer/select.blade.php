@@ -39,12 +39,9 @@
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
-                    @php
-                        $no = 1;
-                    @endphp
-                    @foreach ($Customers as $customer)
+                    @forelse ($Customers as $customer)
                         <tr class="table-primary">
-                            <td class="col-lg-1">{{ $no }}</td>
+                            <td class="col-lg-1">{{ $loop->iteration }}</td>
                             <td class="col-lg-3">{{ $customer->name }}</td>
                             <td class="col-lg-3">{{ $customer->email }}</td>
                             {{-- <td class="col-lg-3">{{ $customer->password }}</td> --}}
@@ -53,10 +50,9 @@
                               <a href="{{route('delete',['id' => $customer->id])}}"><button class="btn btn-danger">Delete</button></a>
                             </td>
                         </tr>
-                        @php
-                            $no++;
-                        @endphp
-                    @endforeach
+                        @empty
+                        <td colspan="4" class="bg-danger">NO Data Found</td>
+                    @endforelse
                 </tbody>
                 <tfoot>
 
