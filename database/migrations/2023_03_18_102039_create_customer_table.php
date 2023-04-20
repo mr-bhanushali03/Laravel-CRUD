@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('mobile');
             $table->string('password');
-            $table->date('dob');
+            $table->date('date');
             $table->string('caste');
             $table->string('file');
             $table->timestamps();

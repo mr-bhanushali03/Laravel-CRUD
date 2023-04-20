@@ -15,7 +15,7 @@ class Customer extends Model
         'email',
         'mobile',
         'password',
-        'dob',
+        'date',
         'caste',
         'file'
     ];

@@ -27,7 +27,12 @@ class CustomerController extends Controller
                 'file' => 'required|image'
             ]
             );
-        Customer::create($request->all());
+            $customer = $request->all();
+            $customer['languages'] = implode(',',$customer['languages']);
+            $imageName = $request->file->getClientOriginalName();
+         $request->file->move('upload/', $imageName);
+        $customer['file'] = $imageName;
+        Customer::create($customer);
 
         return redirect()->route('show');
     }
