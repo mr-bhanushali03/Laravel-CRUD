@@ -10,6 +10,7 @@
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
 </head>
 
@@ -18,16 +19,154 @@
         <!-- place navbar here -->
     </header>
     <main>
-        <form action="{{route('create')}}" method="post" enctype="multipart/form-data">
-            @csrf
-            <div class="container">
-                <h1 class="text-center">Registration</h1>
-                <x-user type="text" name="name" label="Please enter your Name" placeholder="Name"/>
-                <x-user type="email" name="email" label="Please enter your Email" placeholder="xyz@gamil.com"/>
-                <x-user type="password" name="password" label="Please enter your Password" placeholder="Password"/>
-                <button type="submit" class="btn btn-primary">Submit</button>
+        <section class="vh-100 gradient-custom">
+            <div class="container py-5 h-100">
+                <div class="row justify-content-center align-items-center h-100">
+                    <div class="col-12 col-lg-9 col-xl-7">
+                        <div class="card shadow-2-strong card-registration" style="border-radius: 15px">
+                            <div class="card-body p-4 p-md-5">
+                                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
+                                <form action="{{route('create')}}" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-md-12 mb-4">
+                                            <div class="form-group">
+                                                <label for="" class="font-weight-bold">Name</label>
+                                                <input type="text" name="name" id="" class="form-control" placeholder="Enter Your Name" autocomplete="off" value="{{old('name')}}" />
+                                                <span class="text-danger">
+                                                    @error("name")
+                                                        {{$message}}
+                                                    @enderror
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <h6 class="mb-2 pb-1 font-weight-bold">Gender:</h6>
+    
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="gender" id="femaleGender" value="female" checked />
+                                                <label class="form-check-label" for="femaleGender">Female</label>
+                                            </div>
+    
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="gender" id="maleGender" value="male" />
+                                                <label class="form-check-label" for="maleGender">Male</label>
+                                            </div>
+    
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="gender" id="otherGender" value="other" />
+                                                <label class="form-check-label" for="otherGender">Other</label>
+                                            </div>
+                                        </div>
+    
+                                        <div class="col-md-6 mb-4">
+                                            <h6 class="mb-2 pb-1 font-weight-bold">Languages</h6>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="languages[]" id="inlineCheckbox1" value="English" />
+                                                <label class="form-check-label" for="inlineCheckbox1">English</label>
+                                            </div>
+    
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="languages[]" id="inlineCheckbox2" value="Hindi" />
+                                                <label class="form-check-label" for="inlineCheckbox2">Hindi</label>
+                                            </div>
+    
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="languages[]" id="inlineCheckbox3" value="Gujarati" />
+                                                <label class="form-check-label" for="inlineCheckbox3">Gujarati</label>
+                                            </div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4 pb-2">
+                                            <div class="form-group">
+                                                <label for="" class="font-weight-bold">Email</label>
+                                                <input type="email" name="email" id="" class="form-control" placeholder="Enter Your email" autocomplete="off" value="{{old('email')}}"/>
+                                                <span class="text-danger">
+                                                    @error("email")
+                                                        {{$message}}
+                                                    @enderror
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4 pb-2">
+                                            <div class="form-group">
+                                                <label for="" class="font-weight-bold">Mobile</label>
+                                                <input type="tel" name="mobile" id="" class="form-control" placeholder="Enter Your Mobile Number" autocomplete="off" maxlength="10" />
+                                            </div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="" class="font-weight-bold">Pasword</label>
+                                                <input type="password" name="password" id="" class="form-control" placeholder="Enter Your Password" autocomplete="off" value="{{old('password')}}"/>
+                                                <span class="text-danger">
+                                                    @error("password")
+                                                        {{$message}}
+                                                    @enderror
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="" class="font-weight-bold">Date Of Birth</label>
+                                                <input type="date" name="date" id="" class="form-control" placeholder="Enter Your DOB" autocomplete="off" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 mb-4">
+    
+                                            <label class="form-label select-label font-weight-bold">Choose Caste</label>
+                                            <select class="select form-control" name="caste" style="width: 100%;">
+                                                <option value="General">General</option>
+                                                <option value="OBC">OBC</option>
+                                                <option value="ST">ST</option>
+                                                <option value="SC">SC</option>
+                                            </select>
+    
+                                        </div>
+                                    </div>
+    
+                                    <div class="row align-items-center ">
+                                        <div class="col-md-3 ps-5">
+    
+                                            <h6 class="mb-0 font-weight-bold">Upload CV</h6>
+    
+                                        </div>
+                                        <div class="col-md-9 pe-5">
+    
+                                            <input class="form-control form-control-lg" type="file" name="file" />
+                                            <div class="small text-muted mt-2">Upload your CV/Resume or any other relevant file. Max file
+                                                size 50 MB</div>
+    
+                                        </div>
+                                    </div>
+    
+                                    <div class="form-check d-flex justify-content-start mb-4 pb-3 py-4">
+                                        <input class="form-check-input me-3" type="checkbox" value="" id=""/>
+                                        <label class="form-check-label text-black" for="">
+                                            I do accept the <a href="#!" class="text-black"><u>Terms and Conditions</u></a> of your
+                                            site.
+                                        </label>
+                                    </div>
+    
+                                    <div class="mt-4 pt-2">
+                                        <input class="btn btn-primary btn-lg" type="submit" value="Submit" name="submit" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </form>
+        </section>
     </main>
     <footer>
         <!-- place footer here -->
