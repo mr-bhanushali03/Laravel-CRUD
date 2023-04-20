@@ -10,7 +10,13 @@ class Customer extends Model
     use HasFactory;
     public $fillable = [
         'name',
+        'gender',
+        'languages',
         'email',
-        'password'
+        'mobile',
+        'password',
+        'dob',
+        'caste',
+        'file'
     ];
 }

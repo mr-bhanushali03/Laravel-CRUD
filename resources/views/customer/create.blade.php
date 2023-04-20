@@ -47,19 +47,25 @@
                                             <h6 class="mb-2 pb-1 font-weight-bold">Gender:</h6>
     
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="gender" id="femaleGender" value="female" checked />
+                                                <input class="form-check-input" type="radio" name="gender" id="femaleGender" value="Female" />
                                                 <label class="form-check-label" for="femaleGender">Female</label>
                                             </div>
     
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="gender" id="maleGender" value="male" />
+                                                <input class="form-check-input" type="radio" name="gender" id="maleGender" value="Male" />
                                                 <label class="form-check-label" for="maleGender">Male</label>
                                             </div>
     
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="gender" id="otherGender" value="other" />
+                                                <input class="form-check-input" type="radio" name="gender" id="otherGender" value="Other" />
                                                 <label class="form-check-label" for="otherGender">Other</label>
                                             </div>
+                                            <br>
+                                            <span class="text-danger">
+                                                @error("gender")
+                                                    {{$message}}
+                                                @enderror
+                                            </span>
                                         </div>
     
                                         <div class="col-md-6 mb-4">
@@ -78,6 +84,12 @@
                                                 <input class="form-check-input" type="checkbox" name="languages[]" id="inlineCheckbox3" value="Gujarati" />
                                                 <label class="form-check-label" for="inlineCheckbox3">Gujarati</label>
                                             </div>
+                                            <br>
+                                            <span class="text-danger">
+                                                @error("languages")
+                                                    {{$message}}
+                                                @enderror
+                                            </span>
                                         </div>
                                     </div>
     
@@ -96,7 +108,12 @@
                                         <div class="col-md-6 mb-4 pb-2">
                                             <div class="form-group">
                                                 <label for="" class="font-weight-bold">Mobile</label>
-                                                <input type="tel" name="mobile" id="" class="form-control" placeholder="Enter Your Mobile Number" autocomplete="off" maxlength="10" />
+                                                <input type="tel" name="mobile" id="" class="form-control" placeholder="Enter Your Mobile Number" autocomplete="off" maxlength="10" value="{{old('mobile')}}"/>
+                                                <span class="text-danger">
+                                                    @error("mobile")
+                                                        {{$message}}
+                                                    @enderror
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -104,8 +121,8 @@
                                     <div class="row">
                                         <div class="col-6">
                                             <div class="form-group">
-                                                <label for="" class="font-weight-bold">Pasword</label>
-                                                <input type="password" name="password" id="" class="form-control" placeholder="Enter Your Password" autocomplete="off" value="{{old('password')}}"/>
+                                                <label for="" class="font-weight-bold">Password</label>
+                                                <input type="password" name="password" id="" class="form-control" placeholder="Enter Your Password" autocomplete="off"/>
                                                 <span class="text-danger">
                                                     @error("password")
                                                         {{$message}}
@@ -116,7 +133,12 @@
                                         <div class="col-6">
                                             <div class="form-group">
                                                 <label for="" class="font-weight-bold">Date Of Birth</label>
-                                                <input type="date" name="date" id="" class="form-control" placeholder="Enter Your DOB" autocomplete="off" />
+                                                <input type="date" name="date" id="" class="form-control" placeholder="Enter Your DOB" autocomplete="off"/>
+                                                <span class="text-danger">
+                                                    @error("date")
+                                                        {{$message}}
+                                                    @enderror
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -125,28 +147,38 @@
     
                                             <label class="form-label select-label font-weight-bold">Choose Caste</label>
                                             <select class="select form-control" name="caste" style="width: 100%;">
+                                                <option disabled>Choose Caste</option>
                                                 <option value="General">General</option>
                                                 <option value="OBC">OBC</option>
                                                 <option value="ST">ST</option>
                                                 <option value="SC">SC</option>
                                             </select>
-    
+                                            <span class="text-danger">
+                                                @error("caste")
+                                                    {{$message}}
+                                                @enderror
+                                            </span>
                                         </div>
                                     </div>
     
                                     <div class="row align-items-center ">
-                                        <div class="col-md-3 ps-5">
+                                        <div class="col-md-2">
     
                                             <h6 class="mb-0 font-weight-bold">Upload CV</h6>
     
                                         </div>
-                                        <div class="col-md-9 pe-5">
+                                        <div class="col-md-10">
     
                                             <input class="form-control form-control-lg" type="file" name="file" />
                                             <div class="small text-muted mt-2">Upload your CV/Resume or any other relevant file. Max file
                                                 size 50 MB</div>
     
                                         </div>
+                                        <span class="text-danger">
+                                            @error("file")
+                                                {{$message}}
+                                            @enderror
+                                        </span>
                                     </div>
     
                                     <div class="form-check d-flex justify-content-start mb-4 pb-3 py-4">
