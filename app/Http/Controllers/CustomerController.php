@@ -26,11 +26,11 @@ class CustomerController extends Controller
                 'caste' => 'required',
                 'file' => 'required|image'
             ]
-            );
-            $customer = $request->all();
-            $customer['languages'] = implode(',',$customer['languages']);
-            $imageName = $request->file->getClientOriginalName();
-         $request->file->move('upload/', $imageName);
+        );
+        $customer = $request->all();
+        $customer['languages'] = implode(',', $customer['languages']);
+        $imageName = $request->file->getClientOriginalName();
+        $request->file->move('upload/', $imageName);
         $customer['file'] = $imageName;
         Customer::create($customer);
 
@@ -40,7 +40,7 @@ class CustomerController extends Controller
     public function show()
     {
         $Customers = Customer::all();
-        return view('customer.select',compact('Customers'));
+        return view('customer.select', compact('Customers'));
     }
 
     public function delete($id)
@@ -55,16 +55,22 @@ class CustomerController extends Controller
     public function edit($id)
     {
         $customer = Customer::find($id);
+        $customer['languages'] = explode(',', $customer['languages']);
         if (is_null($customer)) {
             return redirect()->route('show');
         } else {
-            return view('customer.update',compact('customer'));
-        }   
+            return view('customer.update', compact('customer'));
+        }
     }
 
     public function update($id, Request $request)
     {
-        Customer::find($id)->update($request->all());
+        $customer = $request->all();
+        $customer['languages'] = implode(',', $customer['languages']);
+        $imageName = $request->file->getClientOriginalName();
+        $request->file->move('upload/', $imageName);
+        $customer['file'] = $imageName;
+        Customer::find($id)->update($customer);
         return redirect()->route('show');
     }
 }

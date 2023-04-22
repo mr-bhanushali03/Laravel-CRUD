@@ -20,8 +20,14 @@ class CustomerFactory extends Factory
     {
         return [
             'name'=>fake()->name(),
+            'gender'=>fake()->random('Male','Female','Other'),
+            'languages'=>fake()->text('English','Hindi','Gujarati'),
             'email'=>fake()->unique()->safeEmail(),
+            'mobile'=>fake()->unique(),
             'password'=> Hash::make('hi'),
+            'date'=>fake()->unique()->date(),
+            'caste'=>fake()->random('General','ST','SC','OBC'),
+            'file'=>fake()->unique()->file(),
         ];
     }
 }
