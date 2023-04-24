@@ -49,17 +49,17 @@
                             <td>{{ $customer->languages }}</td>
                             <td>{{ $customer->email }}</td>
                             <td>{{ $customer->mobile }}</td>
-                            <td>{{ $customer->password }}</td>
+                            <td>{{ Str::limit($customer->password,20,"...") }}</td>
                             <td>{{ $customer->date }}</td>
                             <td>{{ $customer->caste }}</td>
-                            <td>{{ $customer->file }}</td>
+                            <td>{{ Str::limit($customer->file,20,"...") }}</td>
                             <td>
-                              <a href="{{route('update',['id' => $customer->id])}}"><button class="btn btn-warning">Update</button></a>
-                              <a href="{{route('delete',['id' => $customer->id])}}"><button class="btn btn-danger">Delete</button></a>
+                              <a href="{{route('update',['id' => $customer->id])}}"><button class="btn btn-warning mb-2 w-75">Update</button></a>
+                              <a href="{{route('delete',['id' => $customer->id])}}"><button class="btn btn-danger w-75">Delete</button></a>
                             </td>
                         </tr>
                         @empty
-                        <td colspan="4" class="bg-danger">NO Data Found</td>
+                        <td colspan="100%" class="bg-danger text-center">NO Data Found</td>
                     @endforelse
                 </tbody>
                 <tfoot>

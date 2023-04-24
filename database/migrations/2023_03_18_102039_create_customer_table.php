@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('gender');
-            $table->string('languages');
+            $table->enum('gender',['Male','Female','Other']);
+            $table->enum('languages',['English','Hindi','Gujarati','English,Hindi,Gujarati']);
             $table->string('email');
             $table->string('mobile');
             $table->string('password');
             $table->date('date');
-            $table->string('caste');
+            $table->enum('caste',['General','ST','SC','OBC']);
             $table->string('file');
             $table->timestamps();
         });
