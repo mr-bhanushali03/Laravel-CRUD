@@ -14,9 +14,10 @@ use App\Http\Controllers\CustomerController;
 |
 */
 
-Route::get('/',[CustomerController::class,'index']);
-Route::post('/customers',[CustomerController::class,'create'])->name('create');
-Route::get('/customers/view',[CustomerController::class,'show'])->name('show');
+Route::get('/',[CustomerController::class,'index'])->name('index');
+Route::get('/customers',[CustomerController::class,'create'])->name('create');
+Route::post('/customers/store',[CustomerController::class,'store'])->name('store');
+Route::get('/customers/show',[CustomerController::class,'show'])->name('show');
 Route::get('/customers/delete/{id}',[CustomerController::class,'delete'])->name('delete');
-Route::get('/customers/update/{id}',[CustomerController::class,'edit'])->name('update');
-Route::post('/customers/upd-show/{id}',[CustomerController::class,'update'])->name('updateShow');
+Route::get('/customers/edit/{id}',[CustomerController::class,'edit'])->name('edit');
+Route::post('/customers/update/{id}',[CustomerController::class,'update'])->name('update');

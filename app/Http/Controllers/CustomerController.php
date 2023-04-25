@@ -9,10 +9,16 @@ class CustomerController extends Controller
 {
     public function index()
     {
+        $customers = Customer::all();
+        return view('customer.index', compact('customers'));
+    }
+
+    public function create()
+    {
         return view('customer.create');
     }
 
-    public function create(Request $request)
+    public function store(Request $request)
     {
         $request->validate(
             [
@@ -34,13 +40,13 @@ class CustomerController extends Controller
         $customer['file'] = $imageName;
         Customer::create($customer);
 
-        return redirect()->route('show');
+        return redirect()->route('index');
     }
 
     public function show()
     {
-        $Customers = Customer::all();
-        return view('customer.select', compact('Customers'));
+        // $Customers = Customer::all();
+        // return view('customer.index', compact('Customers'));
     }
 
     public function delete($id)
@@ -59,7 +65,7 @@ class CustomerController extends Controller
         if (is_null($customer)) {
             return redirect()->route('show');
         } else {
-            return view('customer.update', compact('customer'));
+            return view('customer.edit', compact('customer'));
         }
     }
 

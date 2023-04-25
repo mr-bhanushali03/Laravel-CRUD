@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->enum('gender',['Male','Female','Other']);
-            $table->enum('languages',['English','Hindi','Gujarati','English,Hindi,Gujarati']);
+            $table->enum('languages',['English','Hindi','Gujarati','English,Hindi,Gujarati','English,Hindi','Hindi,Gujarati']);
             $table->string('email');
             $table->string('mobile');
             $table->string('password');

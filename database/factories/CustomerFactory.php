@@ -23,7 +23,7 @@ class CustomerFactory extends Factory
         return [
             'name'=>fake()->name(),
             'gender'=> Arr::random(['Male','Female','Other']),
-            'languages'=>Arr::random(['English','Hindi','Gujarati','English,Hindi,Gujarati']),
+            'languages'=>Arr::random(['English','Hindi','Gujarati','English,Hindi,Gujarati','English,Hindi','Hindi,Gujarati']),
             'email'=>fake()->unique()->safeEmail(),
             'mobile'=>fake()->unique()->phoneNumber(),
             'password'=> Hash::make('hi'),

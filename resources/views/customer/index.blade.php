@@ -20,7 +20,7 @@
     </header>
     <main>
         <div class="table-responsive">
-          <a href="{{url('/')}}" class="text-light text-decoration-none"><button class="btn btn-primary m-3 ps-3 pe-3">Create</button></a>
+          <a href="{{route('create')}}" class="text-light text-decoration-none"><button class="btn btn-primary m-3 ps-3 pe-3">Create</button></a>
             <table
                 class="table set">
                 <thead class="table-dark">
@@ -41,7 +41,7 @@
                     </tr>
                 </thead>
                 <tbody class="table-light">
-                    @forelse ($Customers as $customer)
+                    @forelse ($customers as $customer)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $customer->name }}</td>
@@ -54,12 +54,12 @@
                             <td>{{ $customer->caste }}</td>
                             <td>{{ Str::limit($customer->file,20,"...") }}</td>
                             <td>
-                              <a href="{{route('update',['id' => $customer->id])}}"><button class="btn btn-warning mb-2 w-75">Update</button></a>
+                              <a href="{{route('edit',['id' => $customer->id])}}"><button class="btn btn-warning mb-2 w-75">Update</button></a>
                               <a href="{{route('delete',['id' => $customer->id])}}"><button class="btn btn-danger w-75">Delete</button></a>
                             </td>
                         </tr>
                         @empty
-                        <td colspan="100%" class="bg-danger text-center">NO Data Found</td>
+                        <td colspan="100%" class="bg-transparent text-center border-white m-5 p-5"><h1 class="p-5 m-5">NO Data Found</h1></td>
                     @endforelse
                 </tbody>
                 <tfoot>

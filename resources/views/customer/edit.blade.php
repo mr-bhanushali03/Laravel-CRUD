@@ -26,7 +26,7 @@
                         <div class="card shadow-2-strong card-registration" style="border-radius: 15px">
                             <div class="card-body p-4 p-md-5">
                                 <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
-                                <form action="{{route('updateShow',['id'=>$customer->id])}}" method="post" enctype="multipart/form-data">
+                                <form action="{{route('update',['id'=>$customer->id])}}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-12 mb-4">
