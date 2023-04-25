@@ -43,10 +43,15 @@ class CustomerController extends Controller
         return redirect()->route('index');
     }
 
-    public function show()
+    public function show($id)
     {
-        // $Customers = Customer::all();
-        // return view('customer.index', compact('Customers'));
+        $customer = Customer::find($id);
+        $customer['languages'] = explode(',', $customer['languages']);
+        if (is_null($customer)) {
+            return redirect()->route('index');
+        } else {
+            return view('customer.show', compact('customer'));
+        }
     }
 
     public function delete($id)
@@ -55,7 +60,7 @@ class CustomerController extends Controller
         if (!is_null($customer)) {
             $customer->delete();
         }
-        return redirect()->route('show');
+        return redirect()->route('index');
     }
 
     public function edit($id)
@@ -63,7 +68,7 @@ class CustomerController extends Controller
         $customer = Customer::find($id);
         $customer['languages'] = explode(',', $customer['languages']);
         if (is_null($customer)) {
-            return redirect()->route('show');
+            return redirect()->route('index');
         } else {
             return view('customer.edit', compact('customer'));
         }
@@ -77,6 +82,6 @@ class CustomerController extends Controller
         $request->file->move('upload/', $imageName);
         $customer['file'] = $imageName;
         Customer::find($id)->update($customer);
-        return redirect()->route('show');
+        return redirect()->route('index');
     }
 }
