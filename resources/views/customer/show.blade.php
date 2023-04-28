@@ -1,97 +1,83 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-    <title>Customer Detail</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS v5.2.1 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
-</head>
-
-<body>
-    <header>
-        <!-- place navbar here -->
-    </header>
-    <main>
-        <section class="section about-section gray-bg" id="about">
-            <div class="container">
-                <h1 class="text-center mb-5">Customer Detail</h1>
-                <div class="row align-items-center flex-row-reverse">
-                    <div class="col-lg-6">
-                        <div class="about-text go-to">
-                            {{-- <h6 class="theme-color lead">A Lead UX &amp; UI designer based in Canada</h6> --}}
-                            {{-- <p>I <mark>design and develop</mark> services for customers of all sizes, specializing in
+@extends('layout.app')
+@section('body')
+    <body>
+        <header>
+            <!-- place navbar here -->
+        </header>
+        <main>
+            <section class="section about-section gray-bg" id="about">
+                <div class="container">
+                    <h1 class="text-center mb-5">Customer Detail</h1>
+                    <div class="row align-items-center flex-row-reverse">
+                        <div class="col-lg-6">
+                            <div class="about-text go-to">
+                                {{-- <h6 class="theme-color lead">A Lead UX &amp; UI designer based in Canada</h6> --}}
+                                {{-- <p>I <mark>design and develop</mark> services for customers of all sizes, specializing in
                                 creating stylish, modern websites, web services and online stores. My passion is to
                                 design digital user experiences through the bold interface and meaningful interactions.
                             </p> --}}
-                            <div class="row about-list">
-                                <div class="col-md-6">
-                                    <div class="media">
-                                        <label>Name</label>
-                                        <p>{{ $customer->name }}</p>
+                                <div class="row about-list">
+                                    <div class="col-md-6">
+                                        <div class="media">
+                                            <label>Name</label>
+                                            <p>{{ $customer->name }}</p>
+                                        </div>
+                                        <div class="media">
+                                            <label>Gender</label>
+                                            <p>{{ $customer->gender }}</p>
+                                        </div>
+                                        <div class="media">
+                                            <label>Languages</label>
+                                            <p>
+                                                @foreach ($customer->languages as $lang)
+                                                    {{ $lang }}
+                                                @endforeach
+                                            </p>
+                                        </div>
+                                        <div class="media">
+                                            <label>E-mail</label>
+                                            <p>{{ $customer->email }}</p>
+                                        </div>
                                     </div>
-                                    <div class="media">
-                                        <label>Gender</label>
-                                        <p>{{ $customer->gender }}</p>
-                                    </div>
-                                    <div class="media">
-                                        <label>Languages</label>
-                                        <p>
-                                            @foreach ($customer->languages as $lang)
-                                                {{ $lang }}
-                                            @endforeach
-                                        </p>
-                                    </div>
-                                    <div class="media">
-                                        <label>E-mail</label>
-                                        <p>{{ $customer->email }}</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="media">
-                                        <label>Phone</label>
-                                        <p>{{ $customer->mobile }}</p>
-                                    </div>
-                                    {{-- <div class="media">
+                                    <div class="col-md-6">
+                                        <div class="media">
+                                            <label>Phone</label>
+                                            <p>{{ $customer->mobile }}</p>
+                                        </div>
+                                        {{-- <div class="media">
                                         <label>Password</label>
                                         <p>{{ $customer->password }}</p>
                                     </div> --}}
-                                    <div class="media">
-                                        <label>Date</label>
-                                        <p>{{ $customer->date }}</p>
-                                    </div>
-                                    <div class="media">
-                                        <label>Caste</label>
-                                        <p>{{ $customer->caste }}</p>
-                                    </div>
-                                    <div class="button">
-                                        <a href="{{ route('edit', ['id' => $customer->id]) }}"><button
-                                                class="btn btn-primary mt-3 w-25">Edit</button></a>
+                                        <div class="media">
+                                            <label>Date</label>
+                                            <p>{{ $customer->date }}</p>
+                                        </div>
+                                        <div class="media">
+                                            <label>Caste</label>
+                                            <p>{{ $customer->caste }}</p>
+                                        </div>
+                                        <div class="button">
+                                            <a href="{{ route('edit', ['id' => $customer->id]) }}"><button
+                                                    class="btn btn-primary mt-3 w-25">Edit</button></a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="about-avatar">
-                            {{-- <img src="https://bootdey.com/img/Content/avatar/avatar7.png" title="" alt=""> --}}
-                            @if (file_exists(public_path('upload/' . $customer->file)))
-                                <img src="{{ asset('upload/' . $customer->file) }}" title="" alt="">
-                            @else
-                                <img src="{{ $customer->file }}" title="" alt="">
-                            @endif
+                        <div class="col-lg-6">
+                            <div class="about-avatar">
+                                {{-- <img src="https://bootdey.com/img/Content/avatar/avatar7.png" title="" alt=""> --}}
+                                @if (file_exists(public_path('upload/' . $customer->file)))
+                                    <img src="{{ asset('upload/' . $customer->file) }}" title="" alt="">
+                                @else
+                                    <img src="{{ $customer->file }}" title="" alt="">
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        {{-- <section class="vh-100 gradient-custom">
+            </section>
+            {{-- <section class="vh-100 gradient-custom">
             <div class="container py-5 h-100">
                 <div class="row justify-content-center align-items-center h-100">
                     <div class="col-12 col-lg-9 col-xl-7">
@@ -273,18 +259,6 @@
                 </div>
             </div>
         </section> --}}
-    </main>
-    <footer>
-        <!-- place footer here -->
-    </footer>
-    <!-- Bootstrap JavaScript Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
-    </script>
-</body>
-
-</html>
+        </main>
+    </body>
+@endsection
