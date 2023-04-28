@@ -71,7 +71,8 @@
                                         <p>{{ $customer->caste }}</p>
                                     </div>
                                     <div class="button">
-                                        <a href="{{route('edit',['id' => $customer->id])}}"><button class="btn btn-primary mt-3 w-25">Edit</button></a>
+                                        <a href="{{ route('edit', ['id' => $customer->id]) }}"><button
+                                                class="btn btn-primary mt-3 w-25">Edit</button></a>
                                     </div>
                                 </div>
                             </div>
@@ -80,7 +81,7 @@
                     <div class="col-lg-6">
                         <div class="about-avatar">
                             {{-- <img src="https://bootdey.com/img/Content/avatar/avatar7.png" title="" alt=""> --}}
-                            @if ($customer->file == public_path('upload/' . $customer->file))
+                            @if (file_exists(public_path('upload/' . $customer->file)))
                                 <img src="{{ asset('upload/' . $customer->file) }}" title="" alt="">
                             @else
                                 <img src="{{ $customer->file }}" title="" alt="">
