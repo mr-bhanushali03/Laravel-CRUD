@@ -47,24 +47,14 @@
                                     class="text-decoration-none text-dark">{{ $loop->iteration }}</a></td>
                             <td><a href="{{ route('show', ['id' => $customer->id]) }}"
                                     class="text-decoration-none text-dark">{{ $customer->name }}</a></td>
-                            <td><a href="{{ route('show', ['id' => $customer->id]) }}"
-                                    class="text-decoration-none text-dark">{{ $customer->gender }}</a></td>
-                            <td><a href="{{ route('show', ['id' => $customer->id]) }}"
-                                    class="text-decoration-none text-dark">{{ $customer->languages }}</a></td>
-                            <td><a href="{{ route('show', ['id' => $customer->id]) }}"
-                                    class="text-decoration-none text-dark">{{ $customer->email }}</a></td>
-                            <td><a href="{{ route('show', ['id' => $customer->id]) }}"
-                                    class="text-decoration-none text-dark">{{ $customer->mobile }}</a></td>
-                            <td><a href="{{ route('show', ['id' => $customer->id]) }}"
-                                    class="text-decoration-none text-dark">{{ Str::limit($customer->password, 20, '...') }}</a>
-                            </td>
-                            <td><a href="{{ route('show', ['id' => $customer->id]) }}"
-                                    class="text-decoration-none text-dark">{{ $customer->date }}</a></td>
-                            <td><a href="{{ route('show', ['id' => $customer->id]) }}"
-                                    class="text-decoration-none text-dark">{{ $customer->caste }}</a></td>
-                            <td><a href="{{ route('show', ['id' => $customer->id]) }}"
-                                    class="text-decoration-none text-dark">{{ Str::limit($customer->file, 20, '...') }}</a>
-                            </td>
+                            <td>{{ $customer->gender }}</td>
+                            <td>{{ $customer->languages }}</td>
+                            <td>{{ $customer->email }}</td>
+                            <td>{{ $customer->mobile }}</td>
+                            <td>{{ Str::limit($customer->password, 20, '...') }}</td>
+                            <td>{{ $customer->date }}</td>
+                            <td>{{ $customer->caste }}</td>
+                            <td>{{ Str::limit($customer->file, 20, '...') }}</td>
                             <td>
                                 <a href="{{ route('edit', ['id' => $customer->id]) }}"><button
                                         class="btn btn-warning mb-2 w-75">Update</button></a>

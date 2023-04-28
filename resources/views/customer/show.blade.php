@@ -10,7 +10,7 @@
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
 </head>
 
@@ -19,7 +19,78 @@
         <!-- place navbar here -->
     </header>
     <main>
-        <section class="vh-100 gradient-custom">
+        <section class="section about-section gray-bg" id="about">
+            <div class="container">
+                <h1 class="text-center mb-5">Customer Detail</h1>
+                <div class="row align-items-center flex-row-reverse">
+                    <div class="col-lg-6">
+                        <div class="about-text go-to">
+                            {{-- <h6 class="theme-color lead">A Lead UX &amp; UI designer based in Canada</h6> --}}
+                            {{-- <p>I <mark>design and develop</mark> services for customers of all sizes, specializing in
+                                creating stylish, modern websites, web services and online stores. My passion is to
+                                design digital user experiences through the bold interface and meaningful interactions.
+                            </p> --}}
+                            <div class="row about-list">
+                                <div class="col-md-6">
+                                    <div class="media">
+                                        <label>Name</label>
+                                        <p>{{ $customer->name }}</p>
+                                    </div>
+                                    <div class="media">
+                                        <label>Gender</label>
+                                        <p>{{ $customer->gender }}</p>
+                                    </div>
+                                    <div class="media">
+                                        <label>Languages</label>
+                                        <p>
+                                            @foreach ($customer->languages as $lang)
+                                                {{ $lang }}
+                                            @endforeach
+                                        </p>
+                                    </div>
+                                    <div class="media">
+                                        <label>E-mail</label>
+                                        <p>{{ $customer->email }}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="media">
+                                        <label>Phone</label>
+                                        <p>{{ $customer->mobile }}</p>
+                                    </div>
+                                    {{-- <div class="media">
+                                        <label>Password</label>
+                                        <p>{{ $customer->password }}</p>
+                                    </div> --}}
+                                    <div class="media">
+                                        <label>Date</label>
+                                        <p>{{ $customer->date }}</p>
+                                    </div>
+                                    <div class="media">
+                                        <label>Caste</label>
+                                        <p>{{ $customer->caste }}</p>
+                                    </div>
+                                    <div class="button">
+                                        <a href="{{route('edit',['id' => $customer->id])}}"><button class="btn btn-primary mt-3 w-25">Edit</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="about-avatar">
+                            {{-- <img src="https://bootdey.com/img/Content/avatar/avatar7.png" title="" alt=""> --}}
+                            @if ($customer->file == public_path('upload/' . $customer->file))
+                                <img src="{{ asset('upload/' . $customer->file) }}" title="" alt="">
+                            @else
+                                <img src="{{ $customer->file }}" title="" alt="">
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {{-- <section class="vh-100 gradient-custom">
             <div class="container py-5 h-100">
                 <div class="row justify-content-center align-items-center h-100">
                     <div class="col-12 col-lg-9 col-xl-7">
@@ -34,7 +105,7 @@
                                                 <label for="" class="font-weight-bold">Name</label>
                                                 <input type="text" name="name" id="" class="form-control" placeholder="Enter Your Name" autocomplete="off" value="{{$customer->name}}" />
                                                 <span class="text-danger">
-                                                    @error("name")
+                                                    @error('name')
                                                         {{$message}}
                                                     @enderror
                                                 </span>
@@ -62,7 +133,7 @@
                                             </div>
                                             <br>
                                             <span class="text-danger">
-                                                @error("gender")
+                                                @error('gender')
                                                     {{$message}}
                                                 @enderror
                                             </span>
@@ -87,7 +158,7 @@
                                             </div>
                                             <br>
                                             <span class="text-danger">
-                                                @error("languages")
+                                                @error('languages')
                                                     {{$message}}
                                                 @enderror
                                             </span>
@@ -100,7 +171,7 @@
                                                 <label for="" class="font-weight-bold">Email</label>
                                                 <input type="email" name="email" id="" class="form-control" placeholder="Enter Your email" autocomplete="off" value="{{$customer->email}}"/>
                                                 <span class="text-danger">
-                                                    @error("email")
+                                                    @error('email')
                                                         {{$message}}
                                                     @enderror
                                                 </span>
@@ -111,7 +182,7 @@
                                                 <label for="" class="font-weight-bold">Mobile</label>
                                                 <input type="tel" name="mobile" id="" class="form-control" placeholder="Enter Your Mobile Number" autocomplete="off" maxlength="10" value="{{$customer->mobile}}"/>
                                                 <span class="text-danger">
-                                                    @error("mobile")
+                                                    @error('mobile')
                                                         {{$message}}
                                                     @enderror
                                                 </span>
@@ -125,7 +196,7 @@
                                                 <label for="" class="font-weight-bold">Password</label>
                                                 <input type="password" name="password" id="" class="form-control" placeholder="Enter Your Password" autocomplete="off" value="{{$customer->password}}"/>
                                                 <span class="text-danger">
-                                                    @error("password")
+                                                    @error('password')
                                                         {{$message}}
                                                     @enderror
                                                 </span>
@@ -136,7 +207,7 @@
                                                 <label for="" class="font-weight-bold">Date Of Birth</label>
                                                 <input type="date" name="date" id="" class="form-control" placeholder="Enter Your DOB" autocomplete="off" value="{{$customer->date}}"/>
                                                 <span class="text-danger">
-                                                    @error("date")
+                                                    @error('date')
                                                         {{$message}}
                                                     @enderror
                                                 </span>
@@ -155,7 +226,7 @@
                                                 <option value="SC" @isset($customer) {{$customer->caste=='SC'? 'selected':''}} @endisset>SC</option>
                                             </select>
                                             <span class="text-danger">
-                                                @error("caste")
+                                                @error('caste')
                                                     {{$message}}
                                                 @enderror
                                             </span>
@@ -176,7 +247,7 @@
     
                                         </div>
                                         <span class="text-danger">
-                                            @error("file")
+                                            @error('file')
                                                 {{$message}}
                                             @enderror
                                         </span>
@@ -200,7 +271,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
     </main>
     <footer>
         <!-- place footer here -->

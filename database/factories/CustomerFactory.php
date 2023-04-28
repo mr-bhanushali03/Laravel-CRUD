@@ -29,7 +29,8 @@ class CustomerFactory extends Factory
             'password'=> Hash::make('hi'),
             'date'=>now(),
             'caste'=>Arr::random(['General','ST','SC','OBC']),
-            'file'=>fake()->image(public_path('upload'),200,200,null,false),
+            // 'file'=>fake()->image(public_path('upload'),200,200,null,false),
+            'file'=>fake()->imageUrl($width=400,$height=400),
         ];
     }
 }
