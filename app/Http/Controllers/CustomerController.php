@@ -57,7 +57,7 @@ class CustomerController extends Controller
     public function edit($id)
     {
         $customer = Customer::find($id);
-        // $customer['languages'] = explode(',', $customer['languages']);
+        $customer['languages'] = explode(',', $customer['languages']);
         if (is_null($customer)) {
             return redirect()->route('index');
         } else {
@@ -68,10 +68,11 @@ class CustomerController extends Controller
     public function update($id, Request $request)
     {
         $customer = $request->all();
-        // $customer['languages'] = implode(',', $customer['languages']);
-        $imageName = $request->file->getClientOriginalName();
-        $request->file->move('upload/', $imageName);
-        $customer['file'] = $imageName;
+        if (!empty($customer['file'])) {
+            $imageName = $request->file->getClientOriginalName();
+            $request->file->move('upload/', $imageName);
+            $customer['file'] = $imageName;
+        }
         Customer::find($id)->update($customer);
         return redirect()->route('index');
     }
