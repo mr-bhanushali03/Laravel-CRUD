@@ -28,6 +28,7 @@
                                         </div>
                                         <div class="media">
                                             <label>Languages</label>
+                                            @dd($customer->languages)
                                             <p>
                                                 @foreach ($customer->languages as $lang)
                                                     {{ $lang }}

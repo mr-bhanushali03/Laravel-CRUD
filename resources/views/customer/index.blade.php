@@ -1,5 +1,6 @@
 @extends('layout.app')
 @section('body')
+
     <body>
         <header>
             <!-- place navbar here -->
@@ -8,11 +9,11 @@
             <div class="table-responsive">
                 <a href="{{ route('create') }}" class="text-light text-decoration-none"><button
                         class="btn btn-primary m-3 ps-3 pe-3">Create</button></a>
-                <table class="table set">
+                <table class="table set text-center">
                     <thead class="table-dark">
                         {{-- <caption></caption> --}}
                         {{-- <th colspan="100%" class="text-center">Customer</th> --}}
-                        <tr class="text-center">
+                        <tr class="">
                             <th>#</th>
                             <th>Name</th>
                             <th>Gender</th>
@@ -26,7 +27,7 @@
                             <th>Operations</th>
                         </tr>
                     </thead>
-                    <tbody class="table-light text-center">
+                    <tbody class="table-light">
                         @forelse ($customers as $customer)
                             <tr>
                                 <td><a href="{{ route('show', ['id' => $customer->id]) }}"
@@ -42,10 +43,10 @@
                                 <td>{{ $customer->caste }}</td>
                                 <td>
                                     @if (file_exists(public_path('upload/' . $customer->file)))
-                                    <img src="{{ asset('upload/' . $customer->file) }}">
-                                @else
-                                    <img src="{{ $customer->file }}">
-                                @endif    
+                                        <img src="{{ asset('upload/' . $customer->file) }}">
+                                    @else
+                                        <img src="{{ $customer->file }}">
+                                    @endif
                                 </td>
                                 <td>
                                     <a href="{{ route('edit', ['id' => $customer->id]) }}"><button

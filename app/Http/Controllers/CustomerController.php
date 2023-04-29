@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CustomerPostRequest;
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Redirect;
 
 class CustomerController extends Controller
 {
@@ -18,23 +21,11 @@ class CustomerController extends Controller
         return view('customer.create');
     }
 
-    public function store(Request $request)
+    public function store(CustomerPostRequest $request)
     {
-        $request->validate(
-            [
-                'name' => 'required',
-                'gender' => 'required',
-                'languages' => 'required',
-                'email' => 'required|email',
-                'mobile' => 'required',
-                'password' => 'required',
-                'date' => 'required',
-                'caste' => 'required',
-                'file' => 'required|image'
-            ]
-        );
+        $request->validated();
         $customer = $request->all();
-        $customer['languages'] = implode(',', $customer['languages']);
+        // $customer['languages'] = implode(',', $customer['languages']);
         $imageName = $request->file->getClientOriginalName();
         $request->file->move('upload/', $imageName);
         $customer['file'] = $imageName;
@@ -46,7 +37,7 @@ class CustomerController extends Controller
     public function show($id)
     {
         $customer = Customer::find($id);
-        $customer['languages'] = explode(',', $customer['languages']);
+        // $customer['languages'] = explode(',', $customer['languages']);
         if (is_null($customer)) {
             return redirect()->route('index');
         } else {
@@ -66,7 +57,7 @@ class CustomerController extends Controller
     public function edit($id)
     {
         $customer = Customer::find($id);
-        $customer['languages'] = explode(',', $customer['languages']);
+        // $customer['languages'] = explode(',', $customer['languages']);
         if (is_null($customer)) {
             return redirect()->route('index');
         } else {
@@ -77,7 +68,7 @@ class CustomerController extends Controller
     public function update($id, Request $request)
     {
         $customer = $request->all();
-        $customer['languages'] = implode(',', $customer['languages']);
+        // $customer['languages'] = implode(',', $customer['languages']);
         $imageName = $request->file->getClientOriginalName();
         $request->file->move('upload/', $imageName);
         $customer['file'] = $imageName;
