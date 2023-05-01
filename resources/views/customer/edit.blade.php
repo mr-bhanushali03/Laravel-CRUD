@@ -56,19 +56,22 @@
     
                                         <div class="col-md-6 mb-4">
                                             <h6 class="mb-2 pb-1 font-weight-bold">Languages</h6>
-
+                                            @php
+                                            // database in return data in string fromate show we can tranform to array for match in_array condition is lagnagua match
+                                                $languages= explode(',',$customer->languages);
+                                            @endphp
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="languages[]" id="inlineCheckbox1" value="English" {{in_array('English',$customer->languages)?'checked':''}}/>
+                                                <input class="form-check-input" type="checkbox" name="languages[]" id="inlineCheckbox1" value="English" {{in_array('English',$languages)?'checked':''}}/>
                                                 <label class="form-check-label" for="inlineCheckbox1">English</label>
                                             </div>
     
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="languages[]" id="inlineCheckbox2" value="Hindi" {{in_array('Hindi',$customer->languages)?'checked':''}}/>
+                                                <input class="form-check-input" type="checkbox" name="languages[]" id="inlineCheckbox2" value="Hindi" {{in_array('Hindi',$languages)?'checked':''}}/>
                                                 <label class="form-check-label" for="inlineCheckbox2">Hindi</label>
                                             </div>
     
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="languages[]" id="inlineCheckbox3" value="Gujarati" {{in_array('Gujarati',$customer->languages)?'checked':''}}/>
+                                                <input class="form-check-input" type="checkbox" name="languages[]" id="inlineCheckbox3" value="Gujarati" {{in_array('Gujarati',$languages)?'checked':''}}/>
                                                 <label class="form-check-label" for="inlineCheckbox3">Gujarati</label>
                                             </div>
                                             <br>

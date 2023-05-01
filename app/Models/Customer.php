@@ -19,13 +19,19 @@ class Customer extends Model
         'caste',
         'file'
     ];
+   
+    // public function getLanguagesAttribute($value)
+    // {
+    //     return explode(',',$value);
+    // }
     public function setLanguagesAttribute($value)
     {
-        if (is_array($value)) {
-            $value = implode(',', $value);
-        } elseif (is_string($value)) {
-            $value = explode(',', $value);
-        }
-        $this->attributes['languages'] = $value;
+        // if (is_array($value)) {
+        //     $value = implode(',', $value);
+        // } elseif (is_string($value)) {
+        //     $value = explode(',', $value);
+        // }
+        // $this->attributes['languages'] = $value;
+        $this->attributes['languages']= implode(',',$value);
     }
 }
