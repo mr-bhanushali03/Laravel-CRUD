@@ -4,7 +4,7 @@
     <body>
         <header>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <h3 class="ms-3 me-3"><a class="navbar-brand" href="{{ route('index') }}">CRUD</a></h3>
+                <h2 class="ms-3 me-3"><a class="navbar-brand" href="{{ route('index') }}">CRUD</a></h2>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -13,12 +13,16 @@
                     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                         <a class="nav-link active" aria-current="page" href="{{ route('index') }}"><i
                                 class="bi bi-person-circle fs-3"></i></a>
+                        <h4 class="mt-2 ms-2">User</h4>
                     </div>
                 </div>
             </nav>
         </header>
         <main>
-            <div class="d-flex justify-content-end me-4 mt-3 mb-3">
+            <div class="d-flex justify-content-between me-4 mt-3 mb-3">
+                <div class="customer-create ">
+                    <h4>Customer<i class="bi bi-arrow-right ms-2 me-2"></i>Create</h4>
+                </div>
                 <a href="{{ route('create') }}" class="text-center h-50"><button class="btn btn-primary">Create<i class="bi bi-person-plus-fill ms-3"></i></button></a>
             </div>
             <div class="table-responsive">

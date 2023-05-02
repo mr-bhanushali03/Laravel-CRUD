@@ -188,7 +188,8 @@
                                     </div>
     
                                     <div class="mt-4 pt-2">
-                                        <input class="btn btn-primary btn-lg" type="submit" value="Submit" name="submit" />
+                                        <input class="btn btn-primary btn-lg" type="submit" value="Save" name="submit" />
+                                        <a href="{{route('index')}}"><button class="btn btn-danger btn-lg">Discard</button></a>
                                     </div>
                                 </form>
                             </div>
