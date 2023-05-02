@@ -2,7 +2,19 @@
 @section('body')
 <body>
     <header>
-        <!-- place navbar here -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <h3 class="ms-3 me-3"><a class="navbar-brand" href="{{ route('index') }}">CRUD</a></h3>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="container-fluid ms-3 me-3">
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <a class="nav-link active" aria-current="page" href="{{ route('index') }}"><i
+                            class="bi bi-person-circle fs-3"></i></a>
+                </div>
+            </div>
+        </nav>
     </header>
     <main>
         <section class="vh-100 gradient-custom">
@@ -190,6 +202,13 @@
             </div>
         </section>
     </main>
+    <div class="container-fluid">
+        <footer class="d-flex justify-content-center align-items-center py-3 my-4 border-top">
+            <div class="col-12 col-md-12 col-sm-12 d-flex align-items-center">
+                <span class="mb-3 mb-md-0 text-body-secondary">© 2023 Company, Inc</span>
+            </div>
+        </footer>
+    </div>
 </body>
 
 @endsection

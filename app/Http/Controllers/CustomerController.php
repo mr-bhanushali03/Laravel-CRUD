@@ -57,7 +57,7 @@ class CustomerController extends Controller
     public function edit($id)
     {
         $customer = Customer::find($id);
-        $customer['languages'] = explode(',', $customer['languages']);
+        // $customer['languages'] = explode(',', $customer['languages']);
         if (is_null($customer)) {
             return redirect()->route('index');
         } else {
